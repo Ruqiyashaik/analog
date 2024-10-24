@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock Using Pure JS</title>
+    <style>
+    #clockContainer{  
+    position: relative;
+    margin:auto; 
+    height:40vw;
+    width:40vw; 
+    background: url(clock.jpg) no-repeat;
+    background-size: 100%;
+ }
+#hour, #minute, #second{
+    position:absolute;
+    background:blue;
+    border-radius:10px; 
+    transform-origin:bottom;
+}
+#hour{
+    width:1.8%;
+    height:25%;
+    top:25%;
+    left:48.85%;
+    opacity:0.8;  
+}
+#minute{
+    width:1.6%;
+    height:30%;
+    top:19%;
+    left:48.9%;
+    opacity:0.8;  
+}
+#second{
+    width:1%;
+    height:40%;
+    top:9%;
+    left:49.25%;
+    opacity:0.8;
+}
+</style>
+    <script>
+   
+    setInterval(() => {
+        let d = new Date();
+        let htime = d.getHours();
+        let mtime = d.getMinutes();
+        let stime = d.getSeconds();
+        
+        let hrotation = 30 * htime + mtime / 2;
+        let mrotation = 6 * mtime;
+        let srotation = 6 * stime;
+
+        document.getElementById('hour').style.transform = `rotate(${hrotation}deg)`;
+        document.getElementById('minute').style.transform = `rotate(${mrotation}deg)`;
+        document.getElementById('second').style.transform = `rotate(${srotation}deg)`;
+    }, 1000);
+</script>
+
+    </script>
+</head>
+<body>
+    <div id="clockContainer">
+        <div id="hour"></div>
+        <div id="minute"></div>
+        <div id="second"></div>
+    </div>
+</body>
+</html>
